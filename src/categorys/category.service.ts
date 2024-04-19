@@ -19,22 +19,23 @@ export class CategoryService {
     });
   }
 
-  // async createCategory(data: Prisma.CategoryCreateInput): Promise<Category> {
-  //   return this.prisma.category.create({ data });
-  // }
+  async createCategory(data: Prisma.CategoryCreateInput): Promise<Category> {
+    return this.prisma.category.create({ 
+      data,
+    });
+  }
 
-  // async updateCategory(params: {
-  //   categoryId: number;
-  //   data: Prisma.CategoryUpdateInput;
-  // }): Promise<Category> {
-  //   const { categoryId, data } = params;
-  //   return this.prisma.category.update({
-  //     where: { id: categoryId },
-  //     data,
-  //   });
-  // }
+  async updateCategory(params: { categoryId: number; data: Prisma.CategoryUpdateInput}): Promise<Category> {
+    const { categoryId, data } = params;
+    return this.prisma.category.update({
+      where: { id: categoryId },
+      data,
+    });
+  }
 
-  // async deleteCategory(categoryId: number): Promise<Category> {
-  //   return this.prisma.category.delete({ where: { id: categoryId } });
-  // }
+  async deleteCategory(categoryId: number): Promise<Category> {
+    return this.prisma.category.delete({ 
+      where: { id: categoryId }, 
+    });
+  }
 }

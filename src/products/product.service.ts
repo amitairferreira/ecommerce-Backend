@@ -32,12 +32,6 @@ export class ProductService {
     });
   }
 
-  // // ! tentando create 2
-
-  // async createProduct(data: Product): Promise<Product> {
-  //   return this.prisma.product.create({ data });
-  // }
-
   async updateProduct(params: { productId: number; data: Prisma.ProductUpdateInput}): Promise<Product> {
     const { productId, data } = params;
     return this.prisma.product.update({

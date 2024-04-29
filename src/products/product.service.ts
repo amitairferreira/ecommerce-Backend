@@ -8,7 +8,7 @@ export class ProductService {
 
   async getAllProducts(): Promise<Product[]> {
     return this.prisma.product.findMany({
-      include: { category: true }, // Include category relation
+      include: { category: true },
     });
   }
 

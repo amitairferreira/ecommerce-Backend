@@ -6,8 +6,11 @@ import { Product, Prisma } from '@prisma/client';
 export class ProductService {
   constructor(private prisma: PrismaService) {}
 
-  async getAllProducts(): Promise<Product[]> {
+  async getAllProducts(page: number, pageSize: number): Promise<Product[]> {
+    const offset = (page - 1) * pageSize;
     return this.prisma.product.findMany({
+      take: pageSize,
+      skip: offset,
       include: { category: true },
     });
   }

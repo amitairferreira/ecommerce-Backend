@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Put, Delete, Query } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { Product as ProductModel } from '@prisma/client';
 
@@ -9,8 +9,11 @@ export class ProductController {
   constructor(private readonly productService: ProductService) { }
 
   @Get('/all')
-  async getAllProducts() {
-    return this.productService.getAllProducts();
+  async getAllProducts(
+    @Query('page') page: number = 1,
+    @Query('pageSize') pageSize: number = 16,
+  ) {
+    return this.productService.getAllProducts(page, pageSize);
   }
 
   @Get('/:id')

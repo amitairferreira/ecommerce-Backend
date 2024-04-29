@@ -12,6 +12,8 @@ export class ProductController {
   async getAllProducts(
     @Query('page') page: number = 1,
     @Query('pageSize') pageSize: number = 16,
+    @Query('order') order: string = 'ASC',
+    @Query('category') category: string,
   ) {
     return this.productService.getAllProducts(page, pageSize);
   }
